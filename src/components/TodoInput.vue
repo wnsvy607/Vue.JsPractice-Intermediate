@@ -3,7 +3,6 @@
     <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo">
     <!-- <button v-on:click="addTodo">add</button> -->
     <span class="addContainer" v-on:click="addTodo">
-
       <i class="fa-solid fa-plus addBtn"></i>
     </span>
   </div>
@@ -19,11 +18,8 @@ export default {
   methods: {
     addTodo: function () {
       if(this.newTodoItem !== '') {
-        var obj = {completed: false, item: this.newTodoItem};
-      // key - value 쌍으로 저장되는 API
-      // localStorage에서 확인이 가능해야 하기 때문에 obj 객체를 JSON API를 사용해
-      // 문자열로 저장한다.
-      localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+      // this.$emit('이벤트 이름', 인자1, 인자2, ...);
+      this.$emit('addTodoItem', this.newTodoItem);
       this.clearInput();
       }
     },
