@@ -18,10 +18,14 @@ export default {
   },
   methods: {
     addTodo: function () {
-      console.log(this.newTodoItem);
+      if(this.newTodoItem !== '') {
+        var obj = {completed: false, item: this.newTodoItem};
       // key - value 쌍으로 저장되는 API
-      localStorage.setItem(this.newTodoItem, this.newTodoItem);
+      // localStorage에서 확인이 가능해야 하기 때문에 obj 객체를 JSON API를 사용해
+      // 문자열로 저장한다.
+      localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
       this.clearInput();
+      }
     },
     clearInput: function () {
       // input box에 입력된 값을 비우는 로직
