@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     addOneItem: function (todoItem) {
-      var obj = { completed: false, item: todoItem };
+      const obj = { completed: false, item: todoItem };
       // key - value 쌍으로 저장되는 API
       // localStorage에서 확인이 가능해야 하기 때문에 obj 객체를 JSON API를 사용해
       // 문자열로 저장한다.
@@ -54,7 +54,7 @@ export default {
   },
   created: function () {
     if (localStorage.length > 0) {
-      for (var i = 0; i < localStorage.length; i++) {
+      for (let i = 0; i < localStorage.length; i++) {
         this.todoItems.push(
           JSON.parse(localStorage.getItem(localStorage.key(i)))
         );
