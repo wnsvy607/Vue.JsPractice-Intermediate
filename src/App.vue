@@ -20,13 +20,13 @@ import TodoInput from "./components/TodoInput.vue";
 import TodoList from "./components/TodoList.vue";
 
 export default {
-  data: function () {
+  data () {
     return {
       todoItems: [],
     };
   },
   methods: {
-    addOneItem: function (todoItem) {
+    addOneItem (todoItem) {
       const obj = { completed: false, item: todoItem };
       // key - value 쌍으로 저장되는 API
       // localStorage에서 확인이 가능해야 하기 때문에 obj 객체를 JSON API를 사용해
@@ -34,11 +34,11 @@ export default {
       localStorage.setItem(todoItem, JSON.stringify(obj));
       this.todoItems.push(obj);
     },
-    removeOneItem: function (todoItem, index) {
+    removeOneItem (todoItem, index) {
       localStorage.removeItem(todoItem.item);
       this.todoItems.splice(index, 1);
     },
-    toggleOneItem: function (todoItem, index) {
+    toggleOneItem (todoItem, index) {
       // todoItem.completed = !todoItem.completed;
       // 이렇게 해버리면 todoItems -> propsdata -> todoItem -> toggleComplete(todoItem) -> toggleOneComplete(todoItem)
       // 라는 안티패턴이 생기기 때문에 아래와 같이 인덱스로 직접 접근한다. 
@@ -47,12 +47,12 @@ export default {
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     },
-    clearAllItems: function() {
+    clearAllItems() {
       localStorage.clear();
       this.todoItems = [];
     }
   },
-  created: function () {
+  created () {
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {
         this.todoItems.push(
@@ -64,10 +64,10 @@ export default {
   },
   components: {
     // 컴포넌트 태그명 : 컴포넌트
-    TodoHeader: TodoHeader,
-    TodoInput: TodoInput,
-    TodoFooter: TodoFooter,
-    TodoList: TodoList,
+    TodoHeader,
+    TodoInput,
+    TodoFooter,
+    TodoList,
   },
 };
 </script>

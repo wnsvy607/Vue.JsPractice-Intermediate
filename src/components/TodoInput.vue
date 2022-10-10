@@ -22,29 +22,29 @@
 import AlertModal from './common/AlertModal.vue';
 
 export default {
-  data: function () {
+  data () {
     return {
       newTodoItem: "",
       showModal: false
     }
   },
   methods: {
-    addTodo: function () {
+    addTodo () {
       if(this.newTodoItem !== '') {
-      // this.$emit('이벤트 이름', 인자1, 인자2, ...);
+      // themit('이벤트 이름', 인자1, 인자2, ...);
       this.$emit('addTodoItem', this.newTodoItem);
       this.clearInput();
       } else {
         this.showModal = !this.showModal;
       }
     },
-    clearInput: function () {
+    clearInput () {
       // input box에 입력된 값을 비우는 로직
       this.newTodoItem = "";
     }
   },
   components: {
-    'AlertModal': AlertModal
+    AlertModal
   }
 };
 </script>
