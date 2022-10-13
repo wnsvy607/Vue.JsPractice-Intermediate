@@ -26,13 +26,14 @@ export default {
     return {
       newTodoItem: "",
       showModal: false
-    }
+    } 
   },
   methods: {
     addTodo () {
       if(this.newTodoItem !== '') {
       // themit('이벤트 이름', 인자1, 인자2, ...);
-      this.$emit('addTodoItem', this.newTodoItem);
+      // this.$emit('addTodoItem', this.newTodoItem);
+      this.$store.commit('addOneItem', this.newTodoItem );
       this.clearInput();
       } else {
         this.showModal = !this.showModal;
