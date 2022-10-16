@@ -21,6 +21,11 @@ export const store = new Vuex.Store({
     state: {
         todoItems: storage.fetch()
     },
+    getters: {
+        storedTodoItems(state) {
+            return state.todoItems;
+        }
+    },
     mutations: {
         addOneItem(state, todoItem) {
             const obj = { completed: false, item: todoItem };
@@ -35,7 +40,7 @@ export const store = new Vuex.Store({
             state.todoItems.splice(payload.index, 1);
         },
         toggleOneItem(state, payload) {
-            
+
             // todoItem.completed = !todoItem.completed;
             // 이렇게 해버리면 todoItems -> propsdata -> todoItem -> toggleComplete(todoItem) -> toggleOneComplete(todoItem)
             // 라는 안티패턴이 생기기 때문에 아래와 같이 인덱스로 직접 접근한다. 
